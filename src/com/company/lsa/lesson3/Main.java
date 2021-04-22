@@ -65,7 +65,7 @@ public class Main {
                     res = num1 - num2;
                     break;
                 default:
-                    throw new IllegalStateException("Unexpected value: " + oper);
+                    throw new IllegalStateException("Unexpected value: " + oper);   // так вообще не бывает, но мало ли..
             }
 
             if (!err) System.out.printf("Your number: %.2f "+oper+" %.2f = %.2f\n", num1, num2, res);
