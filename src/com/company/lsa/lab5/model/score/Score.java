@@ -43,13 +43,15 @@ public abstract class Score implements MoneyInterface {
     public void addMoney(Money money) {
         double usdValueIn = money.getValue() * money.getCurrency().getUsdCource();
         double usdValueThis = this.balance.getValue() *  this.balance.getCurrency().getUsdCource();
-        if (usdValueThis < usdValueIn) {
-            System.out.println("You have no so much!");
-            return;
-        }
+// Не понял, зачем при добавлении валюты проверяем, что столько же уже есть на счету??
+//        if (usdValueThis < usdValueIn) {
+//            System.out.println("You have no so much!");
+//            return;
+//        }
+
+        // добавим специфичную проверку, которую могут переопределять наследующие классы
         if (checkBefore()) {
-            this.balance.setValue((usdValueThis + usdValueIn) *
-                    this.balance.getCurrency().getUsdCource());
+            this.balance.setValue((usdValueThis + usdValueIn) * this.balance.getCurrency().getUsdCource());
         } else {
             System.out.println("No check!");
             return;
@@ -58,10 +60,17 @@ public abstract class Score implements MoneyInterface {
 
     @Override
     public Money getMoney(double balanceLess) {
+        // добавим проверку, что снимать более 30000 за раз низя.
         if (balanceLess > 30000) {
             throw new IllegalArgumentException("Wrong balance less!");
         }
-        this.balance.setValue(this.balance.getValue() - balanceLess);
+        // добавим специфичную проверку, которую могут переопределять наследующие классы
+        if (checkBefore()) {
+            this.balance.setValue(this.balance.getValue() - balanceLess);
+        } else {
+            System.out.println("No check!");
+            return this.balance;
+        }
         return this.balance;
     }
 
@@ -70,6 +79,7 @@ public abstract class Score implements MoneyInterface {
         return this.balance;
     }
 
+    //сама специфичная проверка, которую могут переопределять наследующие классы
     public boolean checkBefore()
     {
         return true;
