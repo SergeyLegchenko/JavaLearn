@@ -14,7 +14,7 @@ public class Main {
         double num1 = in.nextDouble();
 
         boolean opGood=false;
-        String[] ops = {"+", "-", "/", "*", "!"};   // доступные операции
+        String[] ops = {"+", "-", "/", "*", "!"};   // доступные операции - тут
         String oper;
         do {
             // печатаем список доступных операций
