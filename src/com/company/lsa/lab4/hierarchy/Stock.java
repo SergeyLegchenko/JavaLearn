@@ -4,6 +4,7 @@ public class Stock {
     private long number;
     private Emmitent emmitent;
 
+
     public Stock(long number) {
         this.number = number;
         this.emmitent = emmitent;

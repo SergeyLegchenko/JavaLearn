@@ -3,6 +3,7 @@ package com.company.lsa.lab4.hierarchy.operation;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Journal {
     private List<Operation> operations;
 

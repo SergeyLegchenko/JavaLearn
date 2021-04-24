@@ -13,6 +13,7 @@ public class Market {
         this.emmitent = emmitent;
         this.currencyList = currencyList;
     }
+
     public String getName() {
         return name;
     }

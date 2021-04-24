@@ -2,6 +2,7 @@ package com.company.lsa.lab4.hierarchy.operation;
 
 import com.company.lsa.lab4.hierarchy.Emmitent;
 
+
 public class Operation {
     private OperType operType;
     private String name;
