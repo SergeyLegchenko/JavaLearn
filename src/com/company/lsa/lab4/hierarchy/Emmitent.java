@@ -2,7 +2,6 @@ package com.company.lsa.lab4.hierarchy;
 
 import java.util.List;
 
-
 public class Emmitent {
     private String name;
     private Stock stock;

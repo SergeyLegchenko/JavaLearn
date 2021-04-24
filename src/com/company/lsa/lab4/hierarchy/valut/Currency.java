@@ -4,7 +4,6 @@ public class Currency {
     private String name;
     private Number value;
 
-
     public Currency(String name, Number value) {
         this.name = name;
         this.value = value;
