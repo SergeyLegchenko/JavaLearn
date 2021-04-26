@@ -1,7 +1,6 @@
 package com.company.lsa.lab6;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -70,16 +69,13 @@ public class Main {
         Parcel[] sortedParcels = new Parcel[nCount];
         System.arraycopy(masOfParcel, 0, sortedParcels, 0, nCount);
 
-        Arrays.sort(sortedParcels, new Comparator<>() {
-                @Override
-                public int compare(Parcel p1, Parcel p2) {
-                    if ((p1 == null) && (p2 == null))return 0;
-                    if (p1 == null)return 1000;
-                    if (p2 == null)return -1000;
+        Arrays.sort(sortedParcels, (p1, p2) -> {
+            if ((p1 == null) && (p2 == null))return 0;
+            if (p1 == null)return 1000;
+            if (p2 == null)return -1000;
 
-                    return p1.compareTo(p2);
-                }
-            }
+            return p1.compareTo(p2);
+        }
         );
 
         System.out.println(Arrays.toString(sortedParcels));
