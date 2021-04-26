@@ -15,9 +15,6 @@ public class Main {
         System.out.println("=======================");
         System.out.print(  "1 : ");
 
-//        String[] masOfProducts = new String[nCount];
-//        Integer [] masOfCosts = new Integer [nCount];
-//        Integer[] masOfCounts = new Integer[nCount];
         Parcel[] masOfParcel = new Parcel[nCount];
 
         Scanner sc = new Scanner (System.in);
@@ -37,8 +34,8 @@ public class Main {
             }
 
             String productName = parts[0];
-            Integer productCost;
-            Integer productCount;
+            int productCost;
+            int productCount;
             try {
                 productCost = Integer.parseInt(parts[1]);
                 productCount = Integer.parseInt(parts[2]);
@@ -73,15 +70,14 @@ public class Main {
         Parcel[] sortedParcels = new Parcel[nCount];
         System.arraycopy(masOfParcel, 0, sortedParcels, 0, nCount);
 
-        Arrays.sort(sortedParcels, new Comparator<Parcel>() {
+        Arrays.sort(sortedParcels, new Comparator<>() {
                 @Override
                 public int compare(Parcel p1, Parcel p2) {
-                    if ((p1 == null) || (p2 == null))return 0;
+                    if ((p1 == null) && (p2 == null))return 0;
                     if (p1 == null)return 1000;
                     if (p2 == null)return -1000;
 
-                    int res = p1.compareTo(p2);
-                    return res;
+                    return p1.compareTo(p2);
                 }
             }
         );
