@@ -1,101 +1,79 @@
 package com.company.lsa.lab8;
 
-public class HashMapImpl {
-    private float loadfactor = 0.75f;
-    private int capacity = 100;
+public class HashMapImpl<K, V> {
+    // не понятно зачем    private float loadFactor = 0.75f;
+    private final int capacity = 100;
+    @SuppressWarnings("unchecked")
+    private final Entry<K, V>[] table = new Entry[capacity];
     private int size = 0;
-    private Entry table[] = new Entry[capacity];
 
-    private int Hashing(int hashCode) {
+    private int hashing(int hashCode) {
         int location = hashCode % capacity;
-        System.out.println("Location:"+location);
+        System.out.println("Location:" + location);
         return location;
     }
 
     public int size() {
-        // TODO Auto-generated method stub
-        return this.size;
+        return size;
     }
 
     public boolean isEmpty() {
-        if(this.size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
-    public boolean containsKey(Object key) {
-        if(key == null) {
-            if(table[0].getKey() == null) {
-                return true;
-            }
-        }
-        int location = Hashing(key.hashCode());
-        Entry e = null;
-        try {
-            e = table[location];
-        }catch(NullPointerException ex) {
-        }
-        if(e!=null && e.getKey() == key) {
+    public boolean containsKey(K key) {
+        if (key == null && table[0].getKey() == null) {
             return true;
         }
-        return false;
+        //todo Нужно обработать случай NullPointerException
+        int location = hashing(key.hashCode());
+        Entry<K, V> e = table[location];
+        return e != null && e.getKey() == key;
     }
 
-    public boolean containsValue(Object value) {
-        for(int i=0; i<table.length;i++) {
-            if(table[i] != null && table[i].getVal() == value) {
+    public boolean containsValue(V value) {
+        for (Entry<K, V> entry : table) {
+            if (entry != null && entry.getVal() == value) {
                 return true;
             }
         }
         return false;
     }
 
-    public Object get(Object key) {
-        Object ret = null;
-        if(key == null) {
-            Entry e = null;
-            try{
-                e = table[0];
-            }catch(NullPointerException ex) {
-            }
-            if(e != null) {
+    public V get(K key) {
+        V ret = null;
+        if (key == null) {
+            Entry<K, V> e = table[0];
+            if (e != null) {
                 return e.getVal();
             }
         } else {
-            int location = Hashing(key.hashCode());
-            Entry e = null;
-            try{
-                e = table[location];
-            }catch(NullPointerException ex) {
-            }
-            if(e!= null && e.getKey() == key) {
+            int location = hashing(key.hashCode());
+            Entry<K, V> e = table[location];
+            if (e != null && e.getKey() == key) {
                 return e.getVal();
             }
         }
+        //всегда null
         return ret;
     }
 
-    public Object put(Object key, Object val) {
-        Object ret = null;
+    public V put(K key, V val) {
+        V ret = null;
         if (key == null) {
             ret = putForNullKey(val);
             return ret;
         } else {
-            int location = Hashing(key.hashCode());
-            if(location >= capacity) {
+            int location = hashing(key.hashCode());
+            if (location >= capacity) {
                 System.out.println("Rehashing required");
                 return null;
             }
-            Entry e = null;
-            try{
-                e = table[location];
-            }catch(NullPointerException ex) {
-            }
-            if (e!= null && e.getKey() == key) {
+            Entry<K, V> e = table[location];
+            if (e != null && e.getKey() == key) {
                 ret = e.getVal();
             } else {
-                Entry eNew = new Entry();
+                Entry<K, V> eNew = new Entry<>();
                 eNew.setKey(key);
                 eNew.setVal(val);
                 table[location] = eNew;
@@ -105,35 +83,32 @@ public class HashMapImpl {
         return ret;
     }
 
-    private Object putForNullKey(Object val) {
-        Entry e = null;
-        try {
-            e = table[0];
-        }catch(NullPointerException ex) {
-        }
-        Object ret = null;
+    private V putForNullKey(V val) {
+        Entry<K, V> e;
+        e = table[0];
+        V ret = null;
         if (e != null && e.getKey() == null) {
             ret = e.getVal();
             e.setVal(val);
             return ret;
         } else {
-            Entry eNew = new Entry();
+            Entry<K, V> eNew = new Entry<>();
             eNew.setKey(null);
             eNew.setVal(val);
             table[0] = eNew;
             size++;
         }
+        //всегда null
         return ret;
     }
 
     public Object remove(Object key) {
-        int location = Hashing(key.hashCode());
+        int location = hashing(key.hashCode());
         Object ret = null;
-        if(table[location].getKey() == key) {
-            for(int i=location; i<table.length;i++) {
-                table[i] = table[i+1];
-            }
+        if (table[location].getKey() == key) {
+            System.arraycopy(table, location + 1, table, location, table.length - location);
         }
+        //всегда null
         return ret;
     }
 }
