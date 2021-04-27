@@ -4,11 +4,11 @@ import com.company.lsa.lab5.model.account.Account;
 import com.company.lsa.lab5.model.money.Money;
 
 public class CurrentScore extends Score {
-    private final DebetScore debetScore;
+    private final DebitScore debitScore;
 
-    public CurrentScore(Money balance, Account owner, Integer number, DebetScore debetScore) {
+    public CurrentScore(Money balance, Account owner, Integer number, DebitScore debitScore) {
         super(balance, owner, number);
-        this.debetScore = debetScore;
+        this.debitScore = debitScore;
     }
 
     @Override
@@ -20,17 +20,7 @@ public class CurrentScore extends Score {
         // т.к. валюта не указана, берем валюту счета, как для Текущего счета, так и для Дебетового
         // и валюты этих счетов могут быть разные
         if (money.getValue() > 1000000)
-            debetScore.addMoney(new Money(2000, debetScore.getMoneyWithoutLess().getCurrency().getName()));
+            debitScore.addMoney(new Money(2000, debitScore.getMoneyWithoutLess().getCurrency().getName()));
     }
 
-    // остальные методы можно было не переопределять
-    @Override
-    public Money getMoney(double balanceLess) {
-        return super.getMoney(balanceLess);
-    }
-
-    @Override
-    public Money getMoneyWithoutLess() {
-        return super.getMoneyWithoutLess();
-    }
 }
