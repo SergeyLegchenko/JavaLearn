@@ -7,7 +7,7 @@ public class Emmitent {
     private Stock stock;
     private List<Market> marketList;
 
-    public Emmitent(String name) {
+    public Emmitent(String name, Stock stock, List<Market> marketList) {
         this.name = name;
         this.stock = stock;
         this.marketList = marketList;
