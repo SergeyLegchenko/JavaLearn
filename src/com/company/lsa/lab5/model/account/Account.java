@@ -16,29 +16,37 @@ public class Account {
         this.principal = principal;
         this.login = login;
         this.password = password;
-        scoreMap = new HashMap<Integer, Score>();
+        scoreMap = new HashMap<>();
     }
+
     public Map<Integer, Score> getScoreMap() {
         return scoreMap;
     }
+
     public void setScoreMap(Map<Integer, Score> scoreMap) {
         this.scoreMap = scoreMap;
     }
+
     public Principal getPrincipal() {
         return principal;
     }
+
     public void setPrincipal(Principal principal) {
         this.principal = principal;
     }
+
     public String getLogin() {
         return login;
     }
+
     public void setLogin(String login) {
         this.login = login;
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }

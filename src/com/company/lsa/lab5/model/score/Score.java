@@ -42,7 +42,7 @@ public abstract class Score implements MoneyInterface {
     @Override
     public void addMoney(Money money) {
         double usdValueIn = money.getValue() * money.getCurrency().getUsdCource();
-        double usdValueThis = this.balance.getValue() *  this.balance.getCurrency().getUsdCource();
+        double usdValueThis = this.balance.getValue() * this.balance.getCurrency().getUsdCource();
 // Не понял, зачем при добавлении валюты проверяем, что столько же уже есть на счету??
 //        if (usdValueThis < usdValueIn) {
 //            System.out.println("You have no so much!");
@@ -80,8 +80,7 @@ public abstract class Score implements MoneyInterface {
     }
 
     //сама специфичная проверка, которую могут переопределять наследующие классы
-    public boolean checkBefore()
-    {
+    public boolean checkBefore() {
         return true;
     }
 }

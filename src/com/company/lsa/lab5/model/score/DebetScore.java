@@ -4,7 +4,7 @@ import com.company.lsa.lab5.model.account.Account;
 import com.company.lsa.lab5.model.money.Money;
 
 public class DebetScore extends Score {
-    private CreditScore creditScore;
+    private final CreditScore creditScore;
 
     public DebetScore(Money balance, Account owner, Integer number, CreditScore creditScore) {
         super(balance, owner, number);
@@ -38,10 +38,9 @@ public class DebetScore extends Score {
     // "Наличие кредитного счета с балансом менее минус 20 000 запрещает
     // работу с дебетовым счетом"
     @Override
-    public boolean checkBefore()
-    {
+    public boolean checkBefore() {
         // проверку делаем в текущей валюте, т.к. в задаче не указано иное
-        if (this.creditScore.getMoneyWithoutLess().getValue()<-20000)
+        if (this.creditScore.getMoneyWithoutLess().getValue() < -20000)
             throw new IllegalArgumentException("Credit score balance < -20000!");
         return true;
     }

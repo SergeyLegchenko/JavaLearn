@@ -3,8 +3,8 @@ package com.company.lsa.lab5.model.score;
 import com.company.lsa.lab5.model.account.Account;
 import com.company.lsa.lab5.model.money.Money;
 
-public class CurrentScore extends Score{
-    private DebetScore debetScore;
+public class CurrentScore extends Score {
+    private final DebetScore debetScore;
 
     public CurrentScore(Money balance, Account owner, Integer number, DebetScore debetScore) {
         super(balance, owner, number);
@@ -19,7 +19,7 @@ public class CurrentScore extends Score{
         //  дебетовый счет автоматически поступает +2 000"
         // т.к. валюта не указана, берем валюту счета, как для Текущего счета, так и для Дебетового
         // и валюты этих счетов могут быть разные
-        if (money.getValue()>1000000)
+        if (money.getValue() > 1000000)
             debetScore.addMoney(new Money(2000, debetScore.getMoneyWithoutLess().getCurrency().getName()));
     }
 

@@ -3,7 +3,7 @@ package com.company.lsa.lab5.model.money;
 import com.company.lsa.lab5.model.constants.CurrencyHolder;
 
 public class Money {
-    private Currency currency;
+    private final Currency currency;
     private double value;
 
     public Money(double value, String currencyName) {
@@ -14,9 +14,11 @@ public class Money {
     public Currency getCurrency() {
         return currency;
     }
+
     public double getValue() {
         return value;
     }
+
     public void setValue(double value) {
         this.value = value;
     }
