@@ -9,7 +9,7 @@ public class HashMapImpl<K, V> {
 
     private int hashing(int hashCode) {
         int location = hashCode % capacity;
-        System.out.println("Location:" + location);
+//        System.out.println("Location:" + location);
         return location;
     }
 
@@ -25,7 +25,9 @@ public class HashMapImpl<K, V> {
         if (key == null && table[0].getKey() == null) {
             return true;
         }
+        if (key==null) return false;
         //todo Нужно обработать случай NullPointerException
+        //поставил проверку на null выше
         int location = hashing(key.hashCode());
         Entry<K, V> e = table[location];
         return e != null && e.getKey() == key;
@@ -105,10 +107,21 @@ public class HashMapImpl<K, V> {
     public Object remove(Object key) {
         int location = hashing(key.hashCode());
         Object ret = null;
-        if (table[location].getKey() == key) {
-            System.arraycopy(table, location + 1, table, location, table.length - location);
-        }
+        if (table[location].getKey() == key)
+            table[location]=null;
+//            System.arraycopy(table, location + 1, table, location, table.length - location-1);
         //всегда null
         return ret;
     }
+
+    @Override
+    public String toString() {
+        String s="[";
+        for (Entry<K, V> e : table)
+            if (e!=null)
+                s+= " Loc:"+hashing(e.key.hashCode())+":"+e.toString();
+        s+="]";
+        return s;
+    }
+
 }

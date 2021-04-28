@@ -73,6 +73,7 @@ public class Main {
         Arrays.sort(sortedParcels, Comparator.nullsLast(Comparator.naturalOrder()));
 
         System.out.println(Arrays.toString(sortedParcels));
+//        System.out.println(sortedParcels.toString());
 
         long sum = 0;
         for (int i = 0; i < MAX_PARCELS; i++) {

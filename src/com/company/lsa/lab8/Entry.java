@@ -33,7 +33,14 @@ class Entry<K, V> {
         if (o == null || this.getClass() != o.getClass()) {
             return false;
         }
-        Entry<?, ?> e = (Entry<?, ?>) o;
-        return this.key == e.key;
+        return this.key == ((Entry<?, ?>) o).key;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "key=" + key +
+                ", val=" + val +
+                '}';
     }
 }
