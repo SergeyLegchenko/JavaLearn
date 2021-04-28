@@ -30,14 +30,14 @@ public class Main {
 
         System.out.println("======================");
 
-        map.put("Россия",1000);
-        map.put("Россия ",1001);
-        map.put("Russian Federation",2000);
-        map.put("USA",2);
-        map.put("Albania",100);
-        map.put("Gorgia",150);
-        map.put("И всякая другая хрень",3);
+        map1.put("Россия",1000);
+        map1.put("Россия ",1001);
+        map1.put("Russian Federation",2000);
+        map1.put("USA",2);
+        map1.put("Albania",100);
+        map1.put("Gorgia",150);
+        map1.put("И всякая другая хрень",3);
 
-        System.out.println(map);
+        System.out.println(map1);
     }
 }
