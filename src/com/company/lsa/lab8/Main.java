@@ -7,6 +7,7 @@ public class Main {
         //todo надо попробовать его в деле - ИМХО он не работает!!
 
         HashMapImpl<String, Integer> map = new HashMapImpl<>();
+        HashMapImpl<String, Integer> map1 = new HashMapImpl<>();
 
         map.put("JOHN",12);
         map.put("ANN",14);
@@ -26,5 +27,17 @@ public class Main {
         map.remove("JOHN");
         System.out.println("Has JOHN? "+map.containsKey("JOHN"));
         System.out.println("Has SERJ? "+map.containsKey("SERJ"));
+
+        System.out.println("======================");
+
+        map.put("Россия",1000);
+        map.put("Россия ",1001);
+        map.put("Russian Federation",2000);
+        map.put("USA",2);
+        map.put("Albania",100);
+        map.put("Gorgia",150);
+        map.put("И всякая другая хрень",3);
+
+        System.out.println(map);
     }
 }

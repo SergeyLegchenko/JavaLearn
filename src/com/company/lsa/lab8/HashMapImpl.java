@@ -8,7 +8,7 @@ public class HashMapImpl<K, V> {
     private int size = 0;
 
     private int hashing(int hashCode) {
-        int location = hashCode % capacity;
+        int location = hashCode % (capacity/2) + capacity/2;
 //        System.out.println("Location:" + location);
         return location;
     }
