@@ -13,12 +13,12 @@ public class Main {
         map.put("SERJ",10);
         map.put("JOHN",5);
 
-        System.out.println(map.toString());
+        System.out.println(map);
 
         System.out.println("Replace JOHN 12 to 5");
         map.remove("JOHN");
         map.put("JOHN",5);
-        System.out.println(map.toString());
+        System.out.println(map);
         System.out.println("Has SERJ? "+map.containsKey("SERJ"));
         System.out.println("Has 5? "+map.containsValue(5));
 
