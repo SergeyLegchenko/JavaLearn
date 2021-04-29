@@ -22,4 +22,9 @@ public class Money {
     public void setValue(double value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return value+" "+currency.getName();
+    }
 }

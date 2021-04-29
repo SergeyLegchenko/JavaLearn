@@ -11,6 +11,13 @@ public class DebitScore extends Score {
         this.creditScore = creditScore;
     }
 
+    public CreditScore getCreditScore() {
+        return creditScore;
+    }
+
+    @MethodLimit(limit = 4)
+    public Money getBalance() { return super.getBalance(); }
+
     @Override
     public Money getMoney(double balanceLess) {
         // Проверка на снятие более 30000 вынесена в базовый класс.

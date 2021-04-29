@@ -11,6 +11,10 @@ public class CurrentScore extends Score {
         this.debitScore = debitScore;
     }
 
+    public DebitScore getDebitScore() {
+        return debitScore;
+    }
+
     @Override
     public void addMoney(Money money) {
         super.addMoney(money);
